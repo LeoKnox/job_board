@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="head">
+            <h2>Hello {{ request.session.use }}</h2>
+            <a href="logout">logout</a>
+            <form action="/new_job"><input type='submit' value='New job!'></form>
+        </div>
+        <div class="all_jobs">
+            <h3>Everyone's jobs:</h3>
+            <table>
+                <tr>
+                    <th>Job</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                    {% for job in jobs %}
+                    <tr>
+                        <th>{{ job.job }}</th>
+                        <th>{{ job.location}}</th>
+                        <th><a href="/view_job/">view</a><a href="/</th>
+                    </tr>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

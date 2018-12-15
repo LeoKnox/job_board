@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Hello {{request.session.use}}</h2>
+        <a href="/logoout">logout</a>
+        <div class="new_job">
+            <form action="create_job" method="post">
+                {% csrf_token %}
+                Ttile:<input type="text" name="njob"><br>
+                Description:<input type="text" name="ndescription"><br>
+                Location:<input type="text" name="nlocation"><br>
+                <a href="/cancel">Cancel</a>
+                <input type="submit" value="Submit">
+            </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for error in messages %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </body>
+</html>

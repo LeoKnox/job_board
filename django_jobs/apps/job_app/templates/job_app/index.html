@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+        <style>
+        .log_reg {
+            display:inline-block;
+            vertical-align: top;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="log_reg">
+            <h2>Registration</h2>
+            <form action="/register" method="post">
+            {% csrf_token %}
+                <p>First Name <input name="fname" type="text"></p>
+                <p>Last Name<input name="lname" type="text"></p>
+                <p>Email<input name="email" type="text"></p>
+                <p>Password<input name="password" type="text"></p>
+                <p>Confirm Password<input name="confirmpass" type="text"></p>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="log_reg">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+            {% csrf_token %}
+                <p>Email<input name="email" type="text"></p>
+                <p>Password<input name="password" type="text"></p>
+                <button type="submit">Login</button>
+            </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for error in messages %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </body>
+</html>
